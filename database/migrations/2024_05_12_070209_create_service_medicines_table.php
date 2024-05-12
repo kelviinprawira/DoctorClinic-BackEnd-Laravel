@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doctor_schedules', function (Blueprint $table) {
+        Schema::create('service_medicines', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Doctor::class)->constrained('doctors')->onDelete('cascade');
-            $table->string('day');
-            $table->string('time');
-            $table->string('status')->default('active');
-            $table->string('note')->nullable();
+            $table->string('name');
+            $table->enum('category', ['medicine', 'consultation','treatment']);
+            $table->decimal('price', 15,2);
+            $table->integer('quantity')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doctor_schedules');
+        Schema::dropIfExists('service_medicines');
     }
 };

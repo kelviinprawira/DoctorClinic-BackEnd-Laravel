@@ -18,6 +18,7 @@ class DoctorFactory extends Factory
             'doctor_email' => $this->faker->email(),
             'doctor_address' => $this->faker->address(),
             'sip' => $this->faker->numberBetween(1000, 9999),
+            'id_ihs' => $this->faker->numberBetween(1000, 9999),
         ];
     }
 }
