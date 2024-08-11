@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePatientRequest;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +21,18 @@ class PatientController extends Controller
             'message' => 'Success',
             'status' => 'OK'
         ], 200);
+    }
+
+    //    store
+    public function store(StorePatientRequest $request)
+    {
+        
+        $patients = Patient::create($request->all());
+        return response([
+           'data' => $patients,
+            'message' => 'Success',
+        ],200);
+
     }
 }
 
